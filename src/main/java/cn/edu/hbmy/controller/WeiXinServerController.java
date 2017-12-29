@@ -115,7 +115,7 @@ public class WeiXinServerController {
                 // end()是指消息进入该规则后不再进入其他规则。 而next()是指消息进入了一个规则后，如果满足其他规则也能进入，处理。
                 System.out.println("wx = \n" + wx.toString());
                 if("subscribe".equals(wx.getEvent())){
-                    //关注回复 测试
+                    //关注回复
                     router.rule().matcher(new SubscribeMacther()).handler(new SubscribeHandler()).end();
                 }else if("CLICK".equals(wx.getEvent())&& "watch_grade".equals(wx.getEventKey())){
                     //查看成绩消息回复
