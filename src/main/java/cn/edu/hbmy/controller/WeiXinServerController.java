@@ -3,6 +3,7 @@ package cn.edu.hbmy.controller;
 import cn.edu.hbmy.handler.*;
 import cn.edu.hbmy.matcher.OtherMatcher;
 import cn.edu.hbmy.matcher.SubscribeMacther;
+import cn.edu.hbmy.matcher.watch_gradeMatcher;
 import cn.edu.hbmy.service.WxNewsService;
 import com.soecode.wxtools.api.IService;
 import com.soecode.wxtools.api.WxConfig;
@@ -127,6 +128,7 @@ public class WeiXinServerController {
                     //查看学分消息回复
 
                 }else{
+                    router.rule().matcher(new watch_gradeMatcher()).handler(new GradeHandler()).end();
                     //其他消息回复
                     router.rule().matcher(new OtherMatcher()).handler(new OtherHandler()).end();
                 }
