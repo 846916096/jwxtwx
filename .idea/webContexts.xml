@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebContextManager">
+    <option name="state">
+      <map>
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/ceshi.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/common/menu.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/common" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/wx/admin/page/news.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/wx/admin/page" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/wx/stu/home.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/wx/stu" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/wx/stu/login.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/wx/stu" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/wx/stu/page/app.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/wx/stu/page" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/wx/stu/page/user.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/wx/stu/page" />
+      </map>
+    </option>
+  </component>
+</project>

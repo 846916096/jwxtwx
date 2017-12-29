@@ -1,0 +1,26 @@
+package cn.edu.hbmy.handler;
+
+import com.soecode.wxtools.api.IService;
+import com.soecode.wxtools.api.WxMessageHandler;
+import com.soecode.wxtools.bean.WxXmlMessage;
+import com.soecode.wxtools.bean.WxXmlOutMessage;
+import com.soecode.wxtools.exception.WxErrorException;
+
+import java.util.Map;
+
+/**
+ * 处理关注消息 Handler
+ * 用户关注之后自动发送消息给用户
+ * @author MiaoQ
+ * @create 2017-12-24-14:43
+ */
+public class SubscribeHandler implements WxMessageHandler {
+    public WxXmlOutMessage handle(WxXmlMessage wxMessage, Map<String, Object> context, IService iService) throws WxErrorException {
+        WxXmlOutMessage xmlOutMsg = WxXmlOutMessage.TEXT().content("输入以下序号可快速进行操作\n" +
+                "1: 查 看 成 绩\n" +
+                "2: 查 看 通 知\n" +
+                "3: 创 新 学 分\n" +
+                "4: 圈 存 服 务").toUser(wxMessage.getFromUserName()).fromUser(wxMessage.getToUserName()).build();
+        return xmlOutMsg;
+    }
+}

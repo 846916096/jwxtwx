@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.hbmy.mapper.XsjbxxMapper" >
+  <resultMap id="BaseResultMap" type="cn.edu.hbmy.pojo.Xsjbxx" >
+    <id column="XSJBXX_XH" property="xsjbxxXh" jdbcType="VARCHAR" />
+    <result column="XSJBXX_XM" property="xsjbxxXm" jdbcType="VARCHAR" />
+    <result column="XSJBXX_XB" property="xsjbxxXb" jdbcType="VARCHAR" />
+    <result column="XSJBXX_MM" property="xsjbxxMm" jdbcType="VARCHAR" />
+    <result column="XSJBXX_ZYMC" property="xsjbxxZymc" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.edu.hbmy.pojo.Xsjbxx" extends="BaseResultMap" >
+    <result column="XSJBXX_ZP" property="xsjbxxZp" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    XSJBXX_XH, XSJBXX_XM, XSJBXX_XB, XSJBXX_MM, XSJBXX_ZYMC
+  </sql>
+  <sql id="Blob_Column_List" >
+    XSJBXX_ZP
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="cn.edu.hbmy.pojo.XsjbxxExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from XSJBXX
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.edu.hbmy.pojo.XsjbxxExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from XSJBXX
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from XSJBXX
+    where XSJBXX_XH = #{xsjbxxXh,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from XSJBXX
+    where XSJBXX_XH = #{xsjbxxXh,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.edu.hbmy.pojo.XsjbxxExample" >
+    delete from XSJBXX
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.edu.hbmy.pojo.Xsjbxx" >
+    insert into XSJBXX (XSJBXX_XH, XSJBXX_XM, XSJBXX_XB, 
+      XSJBXX_MM, XSJBXX_ZYMC, XSJBXX_ZP
+      )
+    values (#{xsjbxxXh,jdbcType=VARCHAR}, #{xsjbxxXm,jdbcType=VARCHAR}, #{xsjbxxXb,jdbcType=VARCHAR}, 
+      #{xsjbxxMm,jdbcType=VARCHAR}, #{xsjbxxZymc,jdbcType=VARCHAR}, #{xsjbxxZp,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.hbmy.pojo.Xsjbxx" >
+    insert into XSJBXX
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="xsjbxxXh != null" >
+        XSJBXX_XH,
+      </if>
+      <if test="xsjbxxXm != null" >
+        XSJBXX_XM,
+      </if>
+      <if test="xsjbxxXb != null" >
+        XSJBXX_XB,
+      </if>
+      <if test="xsjbxxMm != null" >
+        XSJBXX_MM,
+      </if>
+      <if test="xsjbxxZymc != null" >
+        XSJBXX_ZYMC,
+      </if>
+      <if test="xsjbxxZp != null" >
+        XSJBXX_ZP,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="xsjbxxXh != null" >
+        #{xsjbxxXh,jdbcType=VARCHAR},
+      </if>
+      <if test="xsjbxxXm != null" >
+        #{xsjbxxXm,jdbcType=VARCHAR},
+      </if>
+      <if test="xsjbxxXb != null" >
+        #{xsjbxxXb,jdbcType=VARCHAR},
+      </if>
+      <if test="xsjbxxMm != null" >
+        #{xsjbxxMm,jdbcType=VARCHAR},
+      </if>
+      <if test="xsjbxxZymc != null" >
+        #{xsjbxxZymc,jdbcType=VARCHAR},
+      </if>
+      <if test="xsjbxxZp != null" >
+        #{xsjbxxZp,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.edu.hbmy.pojo.XsjbxxExample" resultType="java.lang.Integer" >
+    select count(*) from XSJBXX
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update XSJBXX
+    <set >
+      <if test="record.xsjbxxXh != null" >
+        XSJBXX_XH = #{record.xsjbxxXh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xsjbxxXm != null" >
+        XSJBXX_XM = #{record.xsjbxxXm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xsjbxxXb != null" >
+        XSJBXX_XB = #{record.xsjbxxXb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xsjbxxMm != null" >
+        XSJBXX_MM = #{record.xsjbxxMm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xsjbxxZymc != null" >
+        XSJBXX_ZYMC = #{record.xsjbxxZymc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xsjbxxZp != null" >
+        XSJBXX_ZP = #{record.xsjbxxZp,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update XSJBXX
+    set XSJBXX_XH = #{record.xsjbxxXh,jdbcType=VARCHAR},
+      XSJBXX_XM = #{record.xsjbxxXm,jdbcType=VARCHAR},
+      XSJBXX_XB = #{record.xsjbxxXb,jdbcType=VARCHAR},
+      XSJBXX_MM = #{record.xsjbxxMm,jdbcType=VARCHAR},
+      XSJBXX_ZYMC = #{record.xsjbxxZymc,jdbcType=VARCHAR},
+      XSJBXX_ZP = #{record.xsjbxxZp,jdbcType=LONGVARBINARY}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update XSJBXX
+    set XSJBXX_XH = #{record.xsjbxxXh,jdbcType=VARCHAR},
+      XSJBXX_XM = #{record.xsjbxxXm,jdbcType=VARCHAR},
+      XSJBXX_XB = #{record.xsjbxxXb,jdbcType=VARCHAR},
+      XSJBXX_MM = #{record.xsjbxxMm,jdbcType=VARCHAR},
+      XSJBXX_ZYMC = #{record.xsjbxxZymc,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.hbmy.pojo.Xsjbxx" >
+    update XSJBXX
+    <set >
+      <if test="xsjbxxXm != null" >
+        XSJBXX_XM = #{xsjbxxXm,jdbcType=VARCHAR},
+      </if>
+      <if test="xsjbxxXb != null" >
+        XSJBXX_XB = #{xsjbxxXb,jdbcType=VARCHAR},
+      </if>
+      <if test="xsjbxxMm != null" >
+        XSJBXX_MM = #{xsjbxxMm,jdbcType=VARCHAR},
+      </if>
+      <if test="xsjbxxZymc != null" >
+        XSJBXX_ZYMC = #{xsjbxxZymc,jdbcType=VARCHAR},
+      </if>
+      <if test="xsjbxxZp != null" >
+        XSJBXX_ZP = #{xsjbxxZp,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where XSJBXX_XH = #{xsjbxxXh,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.edu.hbmy.pojo.Xsjbxx" >
+    update XSJBXX
+    set XSJBXX_XM = #{xsjbxxXm,jdbcType=VARCHAR},
+      XSJBXX_XB = #{xsjbxxXb,jdbcType=VARCHAR},
+      XSJBXX_MM = #{xsjbxxMm,jdbcType=VARCHAR},
+      XSJBXX_ZYMC = #{xsjbxxZymc,jdbcType=VARCHAR},
+      XSJBXX_ZP = #{xsjbxxZp,jdbcType=LONGVARBINARY}
+    where XSJBXX_XH = #{xsjbxxXh,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.hbmy.pojo.Xsjbxx" >
+    update XSJBXX
+    set XSJBXX_XM = #{xsjbxxXm,jdbcType=VARCHAR},
+      XSJBXX_XB = #{xsjbxxXb,jdbcType=VARCHAR},
+      XSJBXX_MM = #{xsjbxxMm,jdbcType=VARCHAR},
+      XSJBXX_ZYMC = #{xsjbxxZymc,jdbcType=VARCHAR}
+    where XSJBXX_XH = #{xsjbxxXh,jdbcType=VARCHAR}
+  </update>
+</mapper>

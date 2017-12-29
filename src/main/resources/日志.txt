@@ -1,0 +1,70 @@
+2017年12月18日：
+        切换redis的DB存储
+        改变存储值的key存储方式
+        js判断发送消息类型
+        服务器端完成发送文本消息类型
+        @TODO 发送图文消息开发 ---研究   (12月26日完成)
+2017年12月19日：
+        修改登录逻辑bug   bug发现：登录其他非数据库账号无响应  (已解决)     ----考虑全面
+        登录加入验证码校验（有点丑）
+2017年12月20日：
+        完善发送消息页面
+        学习js-sdk  ---重点   问题：1 调用分享接口时，出现 errmsg config invalid url domain
+        display:none;不占位隐藏    visibility:hidden;占位隐藏
+        成绩查询显示页面开发
+2017年12月20日
+        redis查询多次出现超时，并且页面卡住，没有提示错误
+2017年12月21日
+        检查为什么出现超时   for循环查询第6次就报错了
+        jedispool在getResource()时出现连接超时并不报错，网上查资料发现没设置blockWhenExhausted,默认为ture，更改后再次查询多次
+        运行报错 Could not get a resource from the pool 和 java.util.NoSuchElementException: Pool exhausted  pool耗尽
+        想到公司项目redis采用的是spring-data-redis，在网上搜了一下
+        jedis客户端在编程实施方面存在如下不足：
+            1) connection管理缺乏自动化，connection-pool的设计缺少必要的容器支持。
+            2) 数据操作需要关注“序列化”/“反序列化”，因为jedis的客户端API接受的数据类型为string和byte，对结构化数据(json,xml,pojo等)操作需要额外的支持。
+            3) 事务操作纯粹为硬编码
+            4) pub/sub功能，缺乏必要的设计模式支持，对于开发者而言需要关注的太多。
+        spring-data-redis针对jedis提供了如下功能：
+            1. 连接池自动管理，提供了一个高度封装的“RedisTemplate”类
+            2. 针对jedis客户端中大量api进行了归类封装,将同一类型操作封装为operation接口
+                ValueOperations：简单K-V操作
+                SetOperations：set类型数据操作
+                ZSetOperations：zset类型数据操作
+                HashOperations：针对map类型的数据操作
+                ListOperations：针对list类型的数据操作
+            3. 提供了对key的“bound”(绑定)便捷化操作API，可以通过bound封装指定的key，然后进行一系列的操作而无须“显式”的再次指定Key，即BoundKeyOperations：
+                BoundValueOperations
+                BoundSetOperations
+                BoundListOperations
+                BoundSetOperations
+                BoundHashOperations
+
+            4. 将事务操作封装，有容器控制。
+            5. 针对数据的“序列化/反序列化”，提供了多种可选择策略(RedisSerializer)
+                JdkSerializationRedisSerializer：POJO对象的存取场景，使用JDK本身序列化机制，将pojo类通过ObjectInputStream/ObjectOutputStream进行序列化操作，最终redis-server中将存储字节序列。是目前最常用的序列化策略。
+                StringRedisSerializer：Key或者value为字符串的场景，根据指定的charset对数据的字节序列编码成string，是“new String(bytes, charset)”和“string.getBytes(charset)”的直接封装。是最轻量级和高效的策略。
+                JacksonJsonRedisSerializer：jackson-json工具提供了javabean与json之间的转换能力，可以将pojo实例序列化成json格式存储在redis中，也可以将json格式的数据转换成pojo实例。因为jackson工具在序列化和反序列化时，需要明确指定Class类型，因此此策略封装起来稍微复杂。【需要jackson-mapper-asl工具支持】
+                OxmSerializer：提供了将javabean与xml之间的转换能力，目前可用的三方支持包括jaxb，apache-xmlbeans；redis存储的数据将是xml工具。不过使用此策略，编程将会有些难度，而且效率最低；不建议使用。【需要spring-oxm模块的支持】
+                针对“序列化和发序列化”中JdkSerializationRedisSerializer和StringRedisSerializer是最基础的策略，原则上，我们可以将数据存储为任何格式以便应用程序存取和解析(其中应用包括app，hadoop等其他工具)，不过在设计时仍然不推荐直接使用“JacksonJsonRedisSerializer”和“OxmSerializer”，因为无论是json还是xml，他们本身仍然是String。
+                如果你的数据需要被第三方工具解析，那么数据应该使用StringRedisSerializer而不是JdkSerializationRedisSerializer。
+                如果你的数据格式必须为json或者xml，那么在编程级别，在redisTemplate配置中仍然使用StringRedisSerializer，在存储之前或者读取之后，使用“SerializationUtils”工具转换转换成json或者xml，请参见下文实例。
+
+            6. 基于设计模式，和JMS开发思路，将pub/sub的API设计进行了封装，使开发更加便捷。
+            7. spring-data-redis中，并没有对sharding提供良好的封装，如果你的架构是基于sharding，那么你需要自己去实现，这也是sdr和jedis相比，唯一缺少的特性。
+
+2017年12月26日
+            早上完成图文消息的发送  ----先将消息保存数据库，通过用户回复的方式发送给用户
+
+
+            MINA这个框架的优点：
+
+                – 异步
+                – 无阻塞
+                – 事件驱动
+                – 支持TCP, UDP, APR, 串口…
+                – 通过 过滤器（Filters）实现扩展性
+                – 同时提供协议框架
+
+剩下主要任务：
+        MINA研究
+        redis 其他方式存储研究
