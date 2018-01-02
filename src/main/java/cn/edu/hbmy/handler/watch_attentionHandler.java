@@ -28,6 +28,7 @@ public class watch_attentionHandler implements WxMessageHandler {
         if(this.wxNews !=null){
             filePath = request.getScheme() + "://" + request.getServerName() + ":" +
                     request.getServerPort() + request.getContextPath()+ this.wxNews.getPicurl();
+            System.out.println("filePath = " + filePath);
         }
     }
 

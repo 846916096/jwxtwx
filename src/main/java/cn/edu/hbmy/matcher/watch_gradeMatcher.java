@@ -10,9 +10,12 @@ import com.soecode.wxtools.bean.WxXmlMessage;
  */
 public class watch_gradeMatcher implements WxMessageMatcher {
     public boolean match(WxXmlMessage message) {
-        //判断字符串中是否有@
-        if(message.getContent().indexOf("@") > 0){
-            return true;
+        if(message.getContent()!=null){
+            //判断字符串中是否有@
+            if(message.getContent().indexOf("@") > 0){
+                return true;
+            }
+            return false;
         }
         return false;
     }

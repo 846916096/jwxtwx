@@ -4,9 +4,9 @@ public class ConfigStatic {
 ////////////////////////////////////////////////////////////
 					// 菜单URL ////
 ///////////////////////////////////////////////////////////
-	public static final String STUDENT_HOME = "https://8921dd7d.ngrok.io/jwxtwx/wx/stu/login";
-	public static final String ADMIN_HOME = "https://8921dd7d.ngrok.io/jwxtwx/wx/admin/login";
-	public static final String TEACHER_HOME = "https://8921dd7d.ngrok.io/jwxtwx/wx/teacher/login";
+	public static final String STUDENT_HOME = "https://0d1548f5.ngrok.io/jwxtwx/wx/stu/login";
+	public static final String ADMIN_HOME = "https://0d1548f5.ngrok.io/jwxtwx/wx/admin/login";
+	public static final String TEACHER_HOME = "https://0d1548f5.ngrok.io/jwxtwx/wx/teacher/login";
 
 
 ////////////////////////////////////////////////////////////
