@@ -5,6 +5,7 @@ import com.soecode.wxtools.api.WxMessageHandler;
 import com.soecode.wxtools.bean.WxXmlMessage;
 import com.soecode.wxtools.bean.WxXmlOutMessage;
 import com.soecode.wxtools.exception.WxErrorException;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Map;
 
