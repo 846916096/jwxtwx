@@ -1,4 +1,4 @@
-package cn.edu.hbmy.controller.pc;  
+/*package cn.edu.hbmy.controller.pc;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,4 +29,4 @@ public class MenuController {
 		return msg;
 	}
 }
-  
+  */

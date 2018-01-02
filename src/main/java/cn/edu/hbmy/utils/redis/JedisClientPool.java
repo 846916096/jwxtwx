@@ -26,6 +26,7 @@ public class JedisClientPool implements JedisClient {
 	 * @param index 第几个db数据库
 	 * @return
 	 */
+
 	public String set(String key, String value,int index) {
         Jedis jedis = jedisPool.getResource();
 		jedis.select(index);
