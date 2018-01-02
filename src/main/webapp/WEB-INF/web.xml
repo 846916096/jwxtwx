@@ -42,6 +42,11 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>autoRunServlet</servlet-name>
+        <servlet-class>cn.edu.hbmy.servlet.AutoRunServlet</servlet-class>
+        <load-on-startup>10</load-on-startup>
+    </servlet>
     <servlet-mapping>
         <servlet-name>jwxtwx</servlet-name>
         <url-pattern>/</url-pattern>

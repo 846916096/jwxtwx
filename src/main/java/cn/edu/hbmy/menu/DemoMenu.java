@@ -15,24 +15,16 @@ import com.soecode.wxtools.exception.WxErrorException;
 
 public class DemoMenu {
 	static IService iService = new WxService();
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		DemoMenu.ceateMenu();
 		getMenu();
-	}
+	}*/
 
 	public static void ceateMenu() {
 		
 		WxMenu menu = new WxMenu();
 		List<WxMenuButton> btnList = new ArrayList<WxMenuButton>();
 
-		// 设置Click类型的菜单
-		/*WxMenuButton menuButton1 = new WxMenuButton();
-		menuButton1.setType(WxConsts.BUTTON_CLICK);
-		menuButton1.setKey("Shortcutentrance");
-		menuButton1.setName("快捷入口");*/
-
-
-		// 设置含有子按钮的按钮3
 		List<WxMenuButton> Shortcut_entrance = new ArrayList<WxMenuButton>();
 
 		WxMenuButton menuButton1_1 = new WxMenuButton();
@@ -104,8 +96,6 @@ public class DemoMenu {
 		try {
 			// 参数1--menu ，参数2--是否是个性化定制。如果是个性化菜单栏，需要设置MenuRule
 			iService.createMenu(menu, false);
-			System.out.println("AccessToken  "+iService.getAccessToken());
-			System.out.println("菜单设置成功");
 		} catch (WxErrorException e) {
 			e.printStackTrace();
 		}
