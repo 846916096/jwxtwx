@@ -8,6 +8,7 @@ import cn.edu.hbmy.utils.JsonUtils;
 import cn.edu.hbmy.utils.ResponseMsg;
 import cn.edu.hbmy.utils.SerializeUtils;
 import cn.edu.hbmy.utils.redis.JedisClientPool;
+import cn.edu.hbmy.utils.redis.RedisTemplatePool;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,9 @@ public class WxLoginServiceImpl implements WxLoginService {
     @Autowired
     XsjbxxMapper xsjbxxMapper;
 
+    @Autowired
+    RedisTemplatePool redisTemplatePool;
+
     public ResponseMsg login(String Xh, String password) {
         ResponseMsg msg = new ResponseMsg();
         try {
@@ -50,6 +54,7 @@ public class WxLoginServiceImpl implements WxLoginService {
                 String token = UUID.randomUUID().toString();
                 //把用户写入redis，key：token  value:用户信息
                 deUser.setXsjbxxMm(null);
+                redisTemplatePool.set("测试","123456");
                 jedisPool.set(ConfigStatic.SESSION + token, JsonUtils.objectToJson(deUser), 1);
                 //设置session过期时间
                 jedisPool.expire(ConfigStatic.SESSION + token, 3600, 1);

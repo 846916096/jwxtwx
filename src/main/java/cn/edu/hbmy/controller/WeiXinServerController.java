@@ -132,7 +132,6 @@ public class WeiXinServerController {
                     //其他消息回复
                     router.rule().matcher(new OtherMatcher()).handler(new OtherHandler()).end();
                 }
-
                 //编号处理回复
                 //router.rule().rContent("^[0-9]*$").handler(new TextHandler(request,wxNewsService.selectByLastNews())).end();
 
