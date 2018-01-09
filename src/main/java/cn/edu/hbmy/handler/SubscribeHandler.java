@@ -16,11 +16,7 @@ import java.util.Map;
  */
 public class SubscribeHandler implements WxMessageHandler {
     public WxXmlOutMessage handle(WxXmlMessage wxMessage, Map<String, Object> context, IService iService) throws WxErrorException {
-        WxXmlOutMessage xmlOutMsg = WxXmlOutMessage.TEXT().content("输入以下序号可快速进行操作\n" +
-                "1: 查 看 成 绩\n" +
-                "2: 查 看 通 知\n" +
-                "3: 创 新 学 分\n" +
-                "4: 圈 存 服 务").toUser(wxMessage.getFromUserName()).fromUser(wxMessage.getToUserName()).build();
+        WxXmlOutMessage xmlOutMsg = WxXmlOutMessage.TEXT().content("感谢关注湖北民族学院教务系统公众号").toUser(wxMessage.getFromUserName()).fromUser(wxMessage.getToUserName()).build();
         return xmlOutMsg;
     }
 }

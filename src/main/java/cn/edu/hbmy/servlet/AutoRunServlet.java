@@ -1,6 +1,7 @@
 package cn.edu.hbmy.servlet;
 
-import cn.edu.hbmy.menu.DemoMenu;
+
+import cn.edu.hbmy.menu.CreateMenu;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +15,7 @@ import javax.servlet.http.HttpServlet;
 public class AutoRunServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
-        DemoMenu.ceateMenu();
+        CreateMenu.ceateMenu();
         super.init();
         System.out.println("初始化菜单完成......");
     }

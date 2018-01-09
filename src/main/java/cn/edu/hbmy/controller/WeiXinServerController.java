@@ -135,7 +135,6 @@ public class WeiXinServerController {
                 //编号处理回复
                 //router.rule().rContent("^[0-9]*$").handler(new TextHandler(request,wxNewsService.selectByLastNews())).end();
 
-
                 // 把消息传递给路由器进行处理
                 WxXmlOutMessage xmlOutMsg = router.route(wx);
                 System.out.println("xmlOutMsg = " + xmlOutMsg);

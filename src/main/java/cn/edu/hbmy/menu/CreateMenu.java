@@ -13,12 +13,12 @@ import com.soecode.wxtools.bean.WxMenu.WxMenuButton;
 import com.soecode.wxtools.bean.result.WxMenuResult;
 import com.soecode.wxtools.exception.WxErrorException;
 
-public class DemoMenu {
+public class CreateMenu {
 	static IService iService = new WxService();
-	/*public static void main(String[] args) {
-		DemoMenu.ceateMenu();
+	public static void main(String[] args) {
+		CreateMenu.ceateMenu();
 		getMenu();
-	}*/
+	}
 
 	public static void ceateMenu() {
 		
