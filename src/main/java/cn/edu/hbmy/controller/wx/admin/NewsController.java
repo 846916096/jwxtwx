@@ -31,7 +31,7 @@ import java.util.List;
  * @since JDK 1.7
  */
 @Controller
-@RequestMapping("/news/")
+@RequestMapping("/wx/admin/news/")
 public class NewsController {
 
     @Autowired
@@ -44,8 +44,6 @@ public class NewsController {
 
     /**
      * 发送文本消息
-     *
-     * @param newsInfo@return
      */
     @RequestMapping(value = "text", method = RequestMethod.POST)
     @ResponseBody
@@ -73,6 +71,9 @@ public class NewsController {
             String newfileName = new Date().getTime() + String.valueOf(fileName);
             String path = request.getSession().getServletContext().getRealPath("upload");
             File targetFile = new File(path, newfileName);
+            if(!targetFile.exists()){
+                targetFile.mkdir();
+            }
             try {
                 file.transferTo(targetFile);
                 news.setPicurl("/upload/" + newfileName);

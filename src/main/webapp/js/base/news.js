@@ -1,6 +1,6 @@
 var token = window.localStorage.getItem("token");
-var sendText = "/jwxtwx/news/text";
-var uploadPic = "/jwxtwx/news/uploadPic";
+var sendText = "/wx/admin/news/text";
+var uploadPic = "/wx/admin/news/uploadPic";
 $(document).ready(function () {
     initpicker1();
 

@@ -17,7 +17,7 @@ import java.util.Map;
 public class watch_gradeHandler implements WxMessageHandler{
     public WxXmlOutMessage handle(WxXmlMessage wxMessage, Map<String, Object> context, IService iService){
         WxXmlOutMessage xmlOutMsg = null;
-        xmlOutMsg = WxXmlOutMessage.TEXT().content("回复\"学号@学年@季度\"查看成绩").toUser(wxMessage.getFromUserName()).fromUser(wxMessage.getToUserName()).build();
+        xmlOutMsg = WxXmlOutMessage.TEXT().content("回复\"学号@学年@季度(春季/秋季)\"查看成绩").toUser(wxMessage.getFromUserName()).fromUser(wxMessage.getToUserName()).build();
         return xmlOutMsg;
     }
 }

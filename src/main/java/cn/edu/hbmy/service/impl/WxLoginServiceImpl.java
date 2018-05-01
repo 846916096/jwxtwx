@@ -54,7 +54,7 @@ public class WxLoginServiceImpl implements WxLoginService {
                 String token = UUID.randomUUID().toString();
                 //把用户写入redis，key：token  value:用户信息
                 deUser.setXsjbxxMm(null);
-                redisTemplatePool.set("测试","123456");
+                // redisTemplatePool.set("测试","123456");
                 jedisPool.set(ConfigStatic.SESSION + token, JsonUtils.objectToJson(deUser), 1);
                 //设置session过期时间
                 jedisPool.expire(ConfigStatic.SESSION + token, 3600, 1);
@@ -86,7 +86,7 @@ public class WxLoginServiceImpl implements WxLoginService {
 
                 user.setXsjbxxMm(null);
                 jedisPool.set(ConfigStatic.SESSION + token, JsonUtils.objectToJson(user), 1);
-                //设置session过期时间
+                //设置session过期时间 @TODO 考虑的登入用户信息是否永久保存在redis中
                 jedisPool.expire(ConfigStatic.SESSION + token, 3600, 1);
                 //把token返回
                 msg.setMessage(ConfigStatic.SESSION + token);

@@ -21,7 +21,7 @@ public class GradeHandler implements WxMessageHandler {
         String s = StringUtils.substringAfter(str, "@");
         String year = StringUtils.substringBefore(s,"@"); //学年
         String jidu = StringUtils.substringAfter(s, "@"); //季度
-        System.out.println("学号 = " + number +"学年 = "+year+"季度 = "+jidu);
+        System.out.println("学号 = " + number +"   学年 = "+year+"   季度 = "+jidu);
 
         return null;
     }

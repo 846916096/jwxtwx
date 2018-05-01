@@ -25,7 +25,7 @@ import java.util.List;
  * @since JDK 1.7
  */
 @Controller
-@RequestMapping("/user")
+@RequestMapping("wx/admin")
 public class UserController {
 	IService iService = new WxService();
 	@Autowired

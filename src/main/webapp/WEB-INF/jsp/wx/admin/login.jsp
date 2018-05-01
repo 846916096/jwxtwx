@@ -44,7 +44,7 @@ var LOGIN = {
 			return true;
 		},
 		doLogin:function() {
-			$.post("/jwxtwx/wx/admin/user/login", $("#formlogin").serialize(),function(data){
+			$.post("/wx/admin/user/login", $("#formlogin").serialize(),function(data){
 				if (data.success) {
 					$.toptip("登录成功", 'success');
 					window.localStorage.setItem("token", data.message);

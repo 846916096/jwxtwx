@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServlet;
 public class AutoRunServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
-        CreateMenu.ceateMenu();
+        /*CreateMenu.ceateMenu();
         super.init();
-        System.out.println("初始化菜单完成......");
+        System.out.println("初始化菜单完成......");*/
     }
 }

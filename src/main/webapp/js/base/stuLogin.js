@@ -15,7 +15,7 @@ var LOGIN = {
         return true;
     },
     doLogin:function() {
-        $.post("/jwxtwx/wx/user/login", $("#formlogin").serialize(),function(data){
+        $.post("/wx/user/login", $("#formlogin").serialize(),function(data){
             if (data.success) {
                 $.toptip("登录成功", 'success');
                 window.localStorage.setItem("userName",$("#formlogin #loginname").val());
@@ -37,7 +37,7 @@ var LOGIN = {
 
 /*点击切换验证码 js*/
 function reloadValidCode() {
-    $("#imageNumber").attr("src","/jwxtwx/wx/user/validCodeServlet?timed="+ new Date().getMilliseconds());
+    $("#imageNumber").attr("src","/wx/user/validCodeServlet?timed="+ new Date().getMilliseconds());
 }
 
 $(document).ready(function() {

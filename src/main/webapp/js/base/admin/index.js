@@ -1,4 +1,4 @@
-var userInfo = '/jwxtwx/user/getAllUser';
+var userInfo = '/wx/admin/getAllUser';
 $(document).ready(function () {
     initDate();
 });
@@ -8,10 +8,6 @@ function initDate() {
         url : userInfo,
         type : 'POST',
         dataType : 'json',
-        async : false,
-        cache : false,
-        contentType : false,
-        processData : false,
         success : function(data) {
             if (data.success) {
                 var temp = data.data;
